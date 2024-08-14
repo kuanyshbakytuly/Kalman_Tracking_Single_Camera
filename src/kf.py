@@ -60,6 +60,7 @@ class KalmanFilter():
         return mu, cov
 
     def calculateCovariance(self, standardDev):
+        standardDev = np.array([i if isinstance(i, float) else i[0] for i in standardDev])
         return np.diag(np.square(standardDev)).astype(np.float32)
 
     def predict(self, oldMu, oldCov):
